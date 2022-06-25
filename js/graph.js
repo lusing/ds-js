@@ -32,8 +32,7 @@ class Graph{
             let u = queue.shift();
             let neighbors = this.adjList.get(u);
             color[u] = 'grey';
-            for(let i=0;i<neighbors.length;i++){
-                let w = neighbors[i];
+            for(let w of neighbors){
                 if(color[w]==='white'){
                     color[w] = 'grey';
                     queue.push(w);
@@ -44,6 +43,29 @@ class Graph{
                 callback(u);
             }
         }
+    }
+
+    dfs(callback){
+        let color = this.initializeColor();
+        for(let v of this.vertices){
+            if(color[v]==='white'){
+                this.dfsVisit(v,color,callback);
+            }
+        }
+    }
+
+    dfsVisit(u, color, callback){
+        color[u] = 'grey';
+        if(callback){
+            callback(u);
+        }
+        let neighbors = this.adjList.get(u);
+        for(let w of neighbors){
+            if(color[w]==='white'){
+                this.dfsVisit(w,color,callback);
+            }
+        }
+        color[u] = 'black';
     }
 }
 
@@ -71,4 +93,4 @@ graph.addEdge('E','I');
 
 console.log(graph);
 graph.bfs('A',console.log);
-
+graph.dfs(console.log);
