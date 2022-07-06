@@ -18,7 +18,7 @@ class Graph{
         let color = [];
         for(let i=0;i<this.vertices.length;i++){
             // 白色表示节点没有被该问过
-            color[this.vertices[i]] = 'white';
+            color[this.verticec] = 'white';
         }
         return color;
     }

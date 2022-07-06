@@ -11,14 +11,14 @@ grid_02 = [["1","1","1"],["0","1","0"],["1","1","1"]];
 function numIsland(grid){
     let num = 0;
     function visit(grid2,i2,j2){
-        console.log(`enter ${i2},${j2}`);
+        //console.log(`enter ${i2},${j2}`);
         //如果越界了直接返回
         if(i2<0 || i2>grid2.length || j2<0 || j2>grid[i2].length){
             return;
         }
         if(grid2[i2][j2]==='1'){
             grid2[i2][j2] = '0';
-            console.log(`cleared ${i2},${j2}`);
+            //console.log(`cleared ${i2},${j2}`);
         }else{
             return;
         }
@@ -42,7 +42,7 @@ function numIsland(grid){
             if(grid[i][j]==='1'){
                 visit(grid,i,j);
                 num ++;
-                console.log(`num=${i},${j}`);
+                //console.log(`num=${i},${j}`);
             }
         }
     }
